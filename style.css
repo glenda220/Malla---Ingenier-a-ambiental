@@ -1,1 +1,130 @@
+// Datos de materias
+const materias = [
+  // Primer semestre
+  { id: "biologia", nombre: "Biología Ambiental", semestre: 1, prerequisitos: [], estado: "disponible" },
+  { id: "calculo_dif", nombre: "Cálculo Diferencial", semestre: 1, prerequisitos: [], estado: "disponible" },
+  { id: "catedra", nombre: "Cátedra Global", semestre: 1, prerequisitos: [], estado: "disponible" },
+  { id: "dibujo", nombre: "Dibujo para Ingeniería", semestre: 1, prerequisitos: [], estado: "disponible" },
+  { id: "english1", nombre: "General English I", semestre: 1, prerequisitos: [], estado: "disponible" },
+  { id: "intro", nombre: "Introducción a la Ingeniería Ambiental y Sanitaria", semestre: 1, prerequisitos: [], estado: "disponible" },
+  { id: "lectura", nombre: "Procesos Lectores y Escriturales", semestre: 1, prerequisitos: [], estado: "disponible" },
+  { id: "razonamiento", nombre: "Razonamiento y Representación Matemática", semestre: 1, prerequisitos: [], estado: "disponible" },
 
+ // Segundo semestre
+  { id: "algebra", nombre: "Álgebra Lineal", semestre: 2, prerequisitos: [], estado: "bloqueada" },
+  { id: "calculo_int", nombre: "Cálculo Integral", semestre: 2, prerequisitos: ["calculo_dif"], estado: "bloqueada" },
+  { id: "expresion", nombre: "Expresión Oral y Argumentación", semestre: 2, prerequisitos: ["lectura"], estado: "bloqueada" },
+  { id: "fisica_mec", nombre: "Física Mecánica", semestre: 2, prerequisitos: ["calculo_dif"], estado: "bloqueada" },
+  { id: "english2", nombre: "General English II", semestre: 2, prerequisitos: ["english1"], estado: "bloqueada" },
+  { id: "quimica", nombre: "Química General", semestre: 2, prerequisitos: [], estado: "bloqueada" },
+
+  // Tercer semestre
+  { id: "calculo_vec", nombre: "Cálculo Vectorial", semestre: 3, prerequisitos: ["algebra", "calculo_int"], estado: "bloqueada" },
+  { id: "calor_ondas", nombre: "Calor y Ondas", semestre: 3, prerequisitos: ["fisica_mec"], estado: "bloqueada" },
+  { id: "ecologia", nombre: "Ecología", semestre: 3, prerequisitos: ["biologia"], estado: "bloqueada" },
+  { id: "english3", nombre: "General English III", semestre: 3, prerequisitos: ["english2"], estado: "bloqueada" },
+  { id: "geometria", nombre: "Geometría Descriptiva", semestre: 3, prerequisitos: ["dibujo"], estado: "bloqueada" },
+  { id: "quimica_org", nombre: "Química Orgánica", semestre: 3, prerequisitos: ["quimica"], estado: "bloqueada" },
+
+// Cuarto semestre
+  { id: "ecuaciones", nombre: "Ecuaciones Diferenciales", semestre: 4, prerequisitos: ["calculo_int"], estado: "bloqueada" },
+  { id: "edafologia1", nombre: "Edafología I", semestre: 4, prerequisitos: ["fisica_mec"], estado: "bloqueada" },
+  { id: "electricidad", nombre: "Electricidad y Magnetismo", semestre: 4, prerequisitos: ["calor_ondas"], estado: "bloqueada" },
+  { id: "english4", nombre: "General English IV", semestre: 4, prerequisitos: ["english3"], estado: "bloqueada" },
+  { id: "geomatica", nombre: "Geomática", semestre: 4, prerequisitos: ["dibujo", "fisica_mec"], estado: "bloqueada" },
+  { id: "probabilidad", nombre: "Probabilidad y Estadística", semestre: 4, prerequisitos: ["calculo_int"], estado: "bloqueada" },
+  { id: "quimica_agua", nombre: "Química del Agua y Aire", semestre: 4, prerequisitos: ["quimica_org"], estado: "bloqueada" },
+
+ // Quinto semestre
+  { id: "analisis_num", nombre: "Análisis Numérico", semestre: 5, prerequisitos: ["ecuaciones"], estado: "bloqueada" },
+  { id: "edafologia2", nombre: "Edafología II", semestre: 5, prerequisitos: ["edafologia1"], estado: "bloqueada" },
+  { id: "estadistica_inf", nombre: "Estadística Inferencial", semestre: 5, prerequisitos: ["probabilidad"], estado: "bloqueada" },
+  { id: "english5", nombre: "General English V", semestre: 5, prerequisitos: ["english4"], estado: "bloqueada" },
+  { id: "mecanica_flu", nombre: "Mecánica de Fluidos", semestre: 5, prerequisitos: ["ecuaciones"], estado: "bloqueada" },
+  { id: "microbio", nombre: "Microbiología Ambiental", semestre: 5, prerequisitos: ["biologia"], estado: "bloqueada" },
+  { id: "monitoreo", nombre: "Monitoreo Ambiental", semestre: 5, prerequisitos: ["quimica_agua"], estado: "bloqueada" },
+
+ // Sexto semestre
+  { id: "diseno_prot", nombre: "Diseño y Prototipado", semestre: 6, prerequisitos: [], estado: "bloqueada" },
+  { id: "eval_ambiental", nombre: "Estudio de Evaluación Ambiental", semestre: 6, prerequisitos: ["monitoreo"], estado: "bloqueada" },
+  { id: "hidraulica", nombre: "Hidráulica", semestre: 6, prerequisitos: ["electricidad", "mecanica_flu"], estado: "bloqueada" },
+  { id: "prevencion_agua", nombre: "Prevención y Control del Agua", semestre: 6, prerequisitos: ["quimica_agua"], estado: "bloqueada" },
+  { id: "prevencion_aire", nombre: "Prevención y Control del Aire", semestre: 6, prerequisitos: ["monitoreo"], estado: "bloqueada" },
+  { id: "prevencion_suelo", nombre: "Prevención y Control del Suelo", semestre: 6, prerequisitos: ["edafologia1"], estado: "bloqueada" },
+  { id: "programacion", nombre: "Programación", semestre: 6, prerequisitos: [], estado: "bloqueada" },
+
+ // Séptimo semestre
+  { id: "acueductos", nombre: "Diseño de Acueductos", semestre: 7, prerequisitos: ["hidraulica"], estado: "bloqueada" },
+  { id: "alcantarillados", nombre: "Diseño de Alcantarillados", semestre: 7, prerequisitos: ["hidraulica"], estado: "bloqueada" },
+  { id: "hidrologia", nombre: "Hidrología", semestre: 7, prerequisitos: ["estadistica_inf"], estado: "bloqueada" },
+  { id: "legislacion", nombre: "Legislación Ambiental", semestre: 7, prerequisitos: ["monitoreo"], estado: "bloqueada" },
+  { id: "metodologia", nombre: "Metodología en Ingeniería", semestre: 7, prerequisitos: ["diseno_prot"], estado: "bloqueada" },
+  { id: "bio_procesos", nombre: "Procesos Biológicos", semestre: 7, prerequisitos: ["prevencion_agua"], estado: "bloqueada" },
+  { id: "fisicoquimicos", nombre: "Procesos Fisicoquímicos", semestre: 7, prerequisitos: ["prevencion_agua"], estado: "bloqueada" },
+  { id: "sensoramiento", nombre: "Sensoramiento Remoto", semestre: 7, prerequisitos: ["geomatica", "programacion"], estado: "bloqueada" },
+
+  // Octavo semestre
+  { id: "electiva1", nombre: "Electiva de Profundización I", semestre: 8, prerequisitos: [], estado: "bloqueada" },
+  { id: "humanistica", nombre: "Formación Humanística", semestre: 8, prerequisitos: [], estado: "bloqueada" },
+  { id: "residuos", nombre: "Gestión de Residuos Sólidos", semestre: 8, prerequisitos: ["edafologia2"], estado: "bloqueada" },
+  { id: "hidrogeologia", nombre: "Hidrogeología", semestre: 8, prerequisitos: ["hidrologia"], estado: "bloqueada" },
+  { id: "propuesta", nombre: "Propuesta de Investigación", semestre: 8, prerequisitos: ["metodologia"], estado: "bloqueada" },
+  { id: "tratamiento_potable", nombre: "Tratamiento Agua Potable", semestre: 8, prerequisitos: ["fisicoquimicos"], estado: "bloqueada" },
+  { id: "tratamiento_residual", nombre: "Tratamiento Agua Residual", semestre: 8, prerequisitos: ["bio_procesos"], estado: "bloqueada" },
+  { id: "etica", nombre: "Ética en Ingeniería", semestre: 8, prerequisitos: [], estado: "bloqueada" },
+
+  // Noveno semestre
+  { id: "rellenos", nombre: "Diseño y Operación de Rellenos Sanitarios", semestre: 9, prerequisitos: ["residuos"], estado: "bloqueada" },
+  { id: "electiva2", nombre: "Electiva de Profundización II", semestre: 9, prerequisitos: [], estado: "bloqueada" },
+  { id: "gestion_rios", nombre: "Gestión de Ríos y Costas", semestre: 9, prerequisitos: ["hidrogeologia"], estado: "bloqueada" },
+  { id: "proyectos", nombre: "Ingeniería de Proyectos", semestre: 9, prerequisitos: [], estado: "bloqueada" },
+  { id: "modelado", nombre: "Modelado de Sistemas Ambientales", semestre: 9, prerequisitos: ["prevencion_agua", "prevencion_aire", "prevencion_suelo"], estado: "bloqueada" },
+  { id: "culminante", nombre: "Proyecto Culminante de Diseño", semestre: 9, prerequisitos: ["propuesta"], estado: "bloqueada" },
+  { id: "gestion_ambiental", nombre: "Sistemas de Gestión Ambiental", semestre: 9, prerequisitos: ["eval_ambiental"], estado: "bloqueada" }
+];
+
+function crearMalla() {
+  const contenedor = document.getElementById("malla");
+  const semestres = [...new Set(materias.map(m => m.semestre))];
+  semestres.forEach(num => {
+    const columna = document.createElement("div");
+    columna.classList.add("semestre");
+    const titulo = document.createElement("h2");
+    titulo.textContent = ${num}° Semestre;
+    columna.appendChild(titulo);
+
+    materias.filter(m => m.semestre === num).forEach(materia => {
+      const div = document.createElement("div");
+      div.classList.add("materia", materia.estado);
+      div.id = materia.id;
+      div.textContent = materia.nombre;
+      div.addEventListener("click", () => toggleMateria(materia.id));
+      columna.appendChild(div);
+    });
+
+    contenedor.appendChild(columna);
+  });
+}
+
+function toggleMateria(id) {
+  const materia = materias.find(m => m.id === id);
+  if (materia.estado !== "disponible") return;
+
+   const div = document.getElementById(id);
+  materia.estado = "aprobada";
+  div.classList.remove("disponible", "bloqueada");
+  div.classList.add("aprobada", "tachado");
+
+  materias.forEach(m => {
+    if (m.estado === "bloqueada" && m.prerequisitos.includes(id)) {
+      if (m.prerequisitos.every(pid => materias.find(mm => mm.id === pid && mm.estado === "aprobada"))) {
+        m.estado = "disponible";
+        const desbloquear = document.getElementById(m.id);
+        desbloquear.classList.remove("bloqueada");
+        desbloquear.classList.add("disponible");
+      }
+    }
+  });
+}
+
+window.onload = crearMalla;
